@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detector de Tumores Virtual</title>
+    <!-- ico -->
+    <link rel="icon" href="/static/img/tumor_detected.png" type="image/x-icon">
+    <link rel="stylesheet" href="/static/css/style_file.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Detector de Tumores Virtual</h1>
+        <nav>
+            <a href="/static/templates/index.html">Inicio</a>
+            <a href="/static/templates/about.html">Sobre Nosotros</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <p class="description">
+            Suba una imagen de resonancia magnética y el sistema analizará y detectará por medio del análisis de los pixeles de la imagen si hay un tumor presente en base a su aprendizaje previo de la red neuronal.
+        </p>
+        <p class="description">
+            Este sistema clasificará la imagen para proporcionarle los resultados de la detección y la probabilidad asociada.
+        </p>
+
+        <!-- formulario mejorado -->
+        <form id="uploadForm" enctype="multipart/form-data" method="post" class="uploader">
+            <input id="file-upload" type="file" name="fileUpload" accept="image/*" />
+        
+            <label for="file-upload" id="file-drag">
+            <img id="file-image" src="#" alt="Preview" class="hidden">
+            <div id="start">
+                <i class="fa fa-download" aria-hidden="true"></i>
+                <div>Selecciona o arrastra tu imagen aquí</div>
+                <div id="notimage" class="hidden">Por favor Selecciona una imagen</div>
+                <span id="file-upload-btn" class="btn btn-primary">Selecciona una imagen</span>
+            </div>
+            <div id="response" class="hidden">
+                <div id="messages"></div>
+                <progress class="progress" id="file-progress" value="0">
+                <span>0</span>%
+                </progress>
+            </div>
+            </label>
+            <p id="error-message" style="color: red; display: none;">
+                Formato de archivo no válido. Asegúrese de subir una imagen en JPEG, PNG o TIFF.
+            </p>
+            <button type="submit" class="btnSubmit">Analizar Imagen</button>
+        </form>
+        <!-- resul modal -->
+        <div id="modalOverlay" class="overlay hidden"></div>
+        <div id="resultModal" class="modal hidden">
+            <div class="modal-content">
+              <img id="resultIcon" src="" alt="Resultado" />
+              <p id="resultMessage"></p>
+              <p id="resultProbability"></p>
+              <p id="resultClass"></p>
+              <button onclick="closeModal()">Cerrar</button>
+            </div>
+        </div>
+    </div>
+    <script src="/static/js/script.js"></script>
+    <script src="/static/js/script_file.js"></script>
+</body>
+</html>
